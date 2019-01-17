@@ -1,0 +1,35 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'com.trzewik.hlt'
+version '1.0-SNAPSHOT'
+
+ext {
+    groovyVersion = '2.5.4'
+    spockVersion = '1.2-groovy-2.5'
+    junitVersion = '4.12'
+    restAssuredVersion = '3.3.0'
+    jacksonVersion = '2.9.8'
+}
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: groovyVersion
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: restAssuredVersion
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
+    testImplementation group: 'junit', name: 'junit', version: junitVersion
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: spockVersion
+}
+
+test{
+    reports {
+        junitXml.enabled = true
+        html.enabled = true
+    }
+}
